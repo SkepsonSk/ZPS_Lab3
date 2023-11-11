@@ -18,6 +18,8 @@
 		569EF3DC2ADED29600742835 /* Lab3_zpsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EF3DB2ADED29600742835 /* Lab3_zpsUITestsLaunchTests.swift */; };
 		569EF3E92ADED31600742835 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EF3E82ADED31600742835 /* CardView.swift */; };
 		569EF3EB2ADED6B000742835 /* MemoryGameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EF3EA2ADED6B000742835 /* MemoryGameUtils.swift */; };
+		56A47C082AFF794900308D9F /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A47C072AFF794900308D9F /* ThemeButton.swift */; };
+		56A47C0A2AFF79C400308D9F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A47C092AFF79C400308D9F /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		569EF3DB2ADED29600742835 /* Lab3_zpsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab3_zpsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		569EF3E82ADED31600742835 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		569EF3EA2ADED6B000742835 /* MemoryGameUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameUtils.swift; sourceTree = "<group>"; };
+		56A47C072AFF794900308D9F /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
+		56A47C092AFF79C400308D9F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 		569EF3B82ADED29400742835 /* Lab3_zps */ = {
 			isa = PBXGroup;
 			children = (
+				56A47C092AFF79C400308D9F /* Theme.swift */,
 				569EF3B92ADED29400742835 /* Lab3_zpsApp.swift */,
 				569EF3BB2ADED29400742835 /* ContentView.swift */,
 				569EF3BD2ADED29500742835 /* Assets.xcassets */,
@@ -110,6 +115,7 @@
 				569EF3BF2ADED29500742835 /* Preview Content */,
 				569EF3E82ADED31600742835 /* CardView.swift */,
 				569EF3EA2ADED6B000742835 /* MemoryGameUtils.swift */,
+				56A47C072AFF794900308D9F /* ThemeButton.swift */,
 			);
 			path = Lab3_zps;
 			sourceTree = "<group>";
@@ -270,10 +276,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				569EF3EB2ADED6B000742835 /* MemoryGameUtils.swift in Sources */,
+				56A47C0A2AFF79C400308D9F /* Theme.swift in Sources */,
 				569EF3C32ADED29500742835 /* Persistence.swift in Sources */,
 				569EF3BC2ADED29400742835 /* ContentView.swift in Sources */,
 				569EF3BA2ADED29400742835 /* Lab3_zpsApp.swift in Sources */,
 				569EF3C62ADED29500742835 /* Lab3_zps.xcdatamodeld in Sources */,
+				56A47C082AFF794900308D9F /* ThemeButton.swift in Sources */,
 				569EF3E92ADED31600742835 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -3,9 +3,9 @@ import CoreData
 
 struct ContentView: View {
 
-    @State private var cards: [String] = ["🫣", "💩"];
+    @State private var currentTheme: Theme = THEMES[0]
     
-    func addCards() {
+/*    func addCards() {
         let currentIndex = cards.count
         if currentIndex < CARD_CONTENT.count{
             let endIndex = min(currentIndex+2, CARD_CONTENT.count)
@@ -13,7 +13,7 @@ struct ContentView: View {
         }
     }
     
-    func removeCards() {
+   func removeCards() {
         if cards.count > 2 {
             cards.removeLast(2)
         }
@@ -25,19 +25,18 @@ struct ContentView: View {
     
     var removeCard: some View {
         return adjustCardNumber(by: -2, symbol: "Remove")
-    }
+    }*/
     
     var body: some View {
         VStack {
+            Text("Memo")
+                .font(.largeTitle)
             cardDisplay
-            HStack {
-                addCard
-                removeCard
-            }
+            themes
         }
     }
 
-    func adjustCardNumber(by offset: Int, symbol: String) -> some View {
+/*    func adjustCardNumber(by offset: Int, symbol: String) -> some View {
         if offset > 0 {
             return Button(action: addCards) {
                 Text(symbol)
@@ -49,17 +48,34 @@ struct ContentView: View {
                 Text(symbol)
             }.disabled(cards.count == 2)
         }
+    }*/
+    
+    func getThemeButton(theme: Theme) -> some View {
+        return ThemeButton(currentTheme: $currentTheme, theme: .constant(theme))
+    }
+    
+    var themes: some View {
+        HStack {
+            ForEach(THEMES, id: \.name) { theme in
+                getThemeButton(theme: theme)
+                    .frame(maxWidth: .infinity)
+            }
+        }
     }
     
     var cardDisplay: some View{
         ScrollView{
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))], content: {
-                ForEach(cards, id: \.self){
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], content: {
+                ForEach(currentTheme.memoIcons, id: \.self){
                     content in
-                    CardView(content: content)
+                    CardView(
+                        content: content,
+                        theme: $currentTheme
+                    )
                 }
             }).padding().foregroundColor(Color.blue)
         }
+    
     }
     
 }

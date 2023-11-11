@@ -1,8 +1,9 @@
-//
-//  Theme.swift
-//  Lab3_zps
-//
-//  Created by Jakub Zelmanowicz on 11/11/2023.
-//
-
 import Foundation
+import SwiftUI
+
+struct Theme {
+    var name: String;
+    var iconName: String;
+    var color: Color;
+    var memoIcons: [String];
+}

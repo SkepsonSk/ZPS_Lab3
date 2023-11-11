@@ -1,18 +1,23 @@
-//
-//  ThemeButton.swift
-//  Lab3_zps
-//
-//  Created by Jakub Zelmanowicz on 11/11/2023.
-//
-
 import SwiftUI
 
 struct ThemeButton: View {
+    @Binding var currentTheme: Theme;
+    @Binding var theme: Theme;
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Image(systemName: currentTheme.iconName)
+                .font(.system(size: 32))
+                .foregroundColor(currentTheme.color)
+            Text(theme.name)
+                .foregroundColor(currentTheme.color)
+        }.onTapGesture {
+            currentTheme = theme;
+            currentTheme.memoIcons.shuffle();
+        }
     }
 }
 
 #Preview {
-    ThemeButton()
+    ThemeButton(currentTheme: .constant(Theme(name: "Theme", iconName: "square.and.pencil", color: .blue, memoIcons: [])), theme: .constant(Theme(name: "Theme", iconName: "square.and.pencil", color: .blue, memoIcons: [])))
 }
