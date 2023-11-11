@@ -1,88 +1,71 @@
-//
-//  ContentView.swift
-//  Lab3_zps
-//
-//  Created by Jakub Zelmanowicz on 17/10/2023.
-//
-
 import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    @State private var cards: [String] = ["🫣", "💩"];
+    
+    func addCards() {
+        let currentIndex = cards.count
+        if currentIndex < CARD_CONTENT.count{
+            let endIndex = min(currentIndex+2, CARD_CONTENT.count)
+            cards.append(contentsOf: CARD_CONTENT[currentIndex..<endIndex])
+        }
+    }
+    
+    func removeCards() {
+        if cards.count > 2 {
+            cards.removeLast(2)
+        }
+    }
+    
+    var addCard: some View {
+        return adjustCardNumber(by: 2, symbol: "Add")
+    }
+    
+    var removeCard: some View {
+        return adjustCardNumber(by: -2, symbol: "Remove")
+    }
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        VStack {
+            cardDisplay
+            HStack {
+                addCard
+                removeCard
             }
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+    func adjustCardNumber(by offset: Int, symbol: String) -> some View {
+        if offset > 0 {
+            return Button(action: addCards) {
+                Text(symbol)
+            }.disabled(cards.count == CARD_CONTENT.count)
 
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+        }
+        else {
+            return Button(action: removeCards) {
+                Text(symbol)
+            }.disabled(cards.count == 2)
         }
     }
+    
+    var cardDisplay: some View{
+        ScrollView{
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))], content: {
+                ForEach(cards, id: \.self){
+                    content in
+                    CardView(content: content)
+                }
+            }).padding().foregroundColor(Color.blue)
+        }
+    }
+    
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }
