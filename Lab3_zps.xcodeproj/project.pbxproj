@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		569EB0DD2B029C6100E2CF4F /* MemoGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EB0DC2B029C6100E2CF4F /* MemoGameModel.swift */; };
+		569EB0DF2B02A3F500E2CF4F /* MemoGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EB0DE2B02A3F500E2CF4F /* MemoGameViewModel.swift */; };
 		569EF3BA2ADED29400742835 /* Lab3_zpsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EF3B92ADED29400742835 /* Lab3_zpsApp.swift */; };
 		569EF3BC2ADED29400742835 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EF3BB2ADED29400742835 /* ContentView.swift */; };
 		569EF3BE2ADED29500742835 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 569EF3BD2ADED29500742835 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		569EB0DC2B029C6100E2CF4F /* MemoGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameModel.swift; sourceTree = "<group>"; };
+		569EB0DE2B02A3F500E2CF4F /* MemoGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameViewModel.swift; sourceTree = "<group>"; };
 		569EF3B62ADED29400742835 /* Lab3_zps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab3_zps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569EF3B92ADED29400742835 /* Lab3_zpsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab3_zpsApp.swift; sourceTree = "<group>"; };
 		569EF3BB2ADED29400742835 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				569EF3E82ADED31600742835 /* CardView.swift */,
 				569EF3EA2ADED6B000742835 /* MemoryGameUtils.swift */,
 				56A47C072AFF794900308D9F /* ThemeButton.swift */,
+				569EB0DC2B029C6100E2CF4F /* MemoGameModel.swift */,
+				569EB0DE2B02A3F500E2CF4F /* MemoGameViewModel.swift */,
 			);
 			path = Lab3_zps;
 			sourceTree = "<group>";
@@ -276,12 +282,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				569EF3EB2ADED6B000742835 /* MemoryGameUtils.swift in Sources */,
+				569EB0DD2B029C6100E2CF4F /* MemoGameModel.swift in Sources */,
 				56A47C0A2AFF79C400308D9F /* Theme.swift in Sources */,
 				569EF3C32ADED29500742835 /* Persistence.swift in Sources */,
 				569EF3BC2ADED29400742835 /* ContentView.swift in Sources */,
 				569EF3BA2ADED29400742835 /* Lab3_zpsApp.swift in Sources */,
 				569EF3C62ADED29500742835 /* Lab3_zps.xcdatamodeld in Sources */,
 				56A47C082AFF794900308D9F /* ThemeButton.swift in Sources */,
+				569EB0DF2B02A3F500E2CF4F /* MemoGameViewModel.swift in Sources */,
 				569EF3E92ADED31600742835 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

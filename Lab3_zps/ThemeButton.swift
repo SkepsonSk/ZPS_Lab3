@@ -1,23 +1,24 @@
+import Foundation
 import SwiftUI
 
 struct ThemeButton: View {
-    @Binding var currentTheme: Theme;
-    @Binding var theme: Theme;
+    var theme: Theme;
+    var color: Color;
+    var action: () -> Void;
     
     var body: some View {
-        VStack {
-            Image(systemName: currentTheme.iconName)
-                .font(.system(size: 32))
-                .foregroundColor(currentTheme.color)
-            Text(theme.name)
-                .foregroundColor(currentTheme.color)
-        }.onTapGesture {
-            currentTheme = theme;
-            currentTheme.memoIcons.shuffle();
+        Button(action: action) {
+            VStack {
+                Image(systemName: theme.iconName)
+                    .font(.system(size: 32))
+                Text(theme.name).font(.title3)
+            }.foregroundColor(color)
         }
     }
 }
 
 #Preview {
-    ThemeButton(currentTheme: .constant(Theme(name: "Theme", iconName: "square.and.pencil", color: .blue, memoIcons: [])), theme: .constant(Theme(name: "Theme", iconName: "square.and.pencil", color: .blue, memoIcons: [])))
+    ThemeButton(theme: THEMES[0], color: .blue, action: {
+        print("Test");
+    })
 }
